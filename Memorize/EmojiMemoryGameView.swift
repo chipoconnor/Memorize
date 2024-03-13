@@ -15,9 +15,15 @@ struct EmojiMemoryGameView: View {
 
 	var body: some View {
 		VStack {
-			Text("Memorize")
-				.font(.largeTitle)
-				.foregroundColor(.teal)
+			HStack {
+				Text("Memorize")
+					.font(.largeTitle)
+					.foregroundColor(.teal)
+				Spacer()
+				Text("\(EmojiMemoryGame.currentThemeName)")
+					.foregroundColor(.green)
+					.font(.title2)
+			}
 			ScrollView {
 				cards
 					.animation(.default, value: viewModel.cards)
@@ -75,7 +81,8 @@ struct EmojiMemoryGameView: View {
 							viewModel.choose(card)
 							if !card.isFaceup {
 								let utterance = AVSpeechUtterance(string: card.content)
-								utterance.voice = AVSpeechSynthesisVoice(language: "es-MX")
+//								utterance.voice = AVSpeechSynthesisVoice(language: "es-MX")
+								utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
 								EmojiMemoryGameView.synthesizer.speak(utterance)
 							}
 						}
