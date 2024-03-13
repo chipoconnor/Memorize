@@ -10,30 +10,48 @@ import SwiftUI
 
 class EmojiMemoryGame: ObservableObject {
 	private static let emojis: [String: Array] = [
-		"Transport": ["🚔","🚌","🛻","🚇","🚗","🚆","🛺","🚀","🚁","🚂"
-					 ,"⛵️","🛵","🚠","🏎️","🛰️","🚟","🌋","🗻","🎢","⚓️" ],
+		"Transport": [
+						"🚌","🛻","🚗","🚀","🚁","🚂"
+					   ,"⛵️","🛵","🏎️","🛰️","🌋","🗻","🎢","⚓️"
+					  ],
 
-		"Letters": ["A","B","C","D","E","F","G","H","I","J"
+		"Letters": 	[
+					"A","B","C","D","E","F","G","H","I","J"
 				   ,"K","L","M","N","O","P","Q","R","S","T"
-				   ,"U","V","W","X","Y","Z" ],
+				   ,"U","V","W","X","Y","Z"
+				   ,"a","b","c","d","e","f","g","h","i","j"
+					,"k","l","m","n","o","p","q","r","s","t"
+					,"u","v","w","x","y","z"
+					],
 
-		"Numbers":  ["1","2","3","4","5","6","7","8","9","10","100","1000"]
+		"Numbers": [
+					 "0.00","0.01","0.02","0.03","0.04"
+					,"0","1","2","3","4","5","6","7","8","9"
+					,"10","20"
+					,"100","200"
+					,"1000","2000"
+				   ],
+
+		"Food":		[
+					"🥕","🍏","🥔","🍌","🥑","🥨","🍕","🫔","🌮","🥭"
+					]
 			]
 
 	@Published private var model = createMenoryGame(nameOfTheme: "Numbers")
 
 	private static func createMenoryGame(nameOfTheme: String) -> MemoryGame<String> {
-		if let emojiTheme = emojis[nameOfTheme] {
+		// shuffle, so each game is different
+		if let emojiTheme = emojis[nameOfTheme]?.shuffled() {
 			return MemoryGame<String>(numberOfPairsOfCards: Int.random(in: 4..<emojiTheme.count)) {
 				pairIndex in
 				if emojiTheme.indices.contains(pairIndex) {
 					return emojiTheme[pairIndex]
 				} else {
-					return "⁉"
+					return "⁉️"
 				}
 			}
 		} else {
-			return MemoryGame<String>(numberOfPairsOfCards: 0) { _ in return "!?\(nameOfTheme)" }
+			return MemoryGame<String>(numberOfPairsOfCards: 0) { _ in return "⁉️\(nameOfTheme)" }
 		}
 	}
 

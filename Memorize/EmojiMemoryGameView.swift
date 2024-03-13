@@ -25,26 +25,38 @@ struct EmojiMemoryGameView: View {
 			Spacer()
 			HStack {
 				VStack {
+					let theme = "Transport"
 					Image(systemName: "airplane.departure")
 						.foregroundColor(.yellow)
-					Button("Transport") {
-						viewModel.changeTheme("Transport")
+					Button(theme) {
+						viewModel.changeTheme(theme)
 					}
 				}
 				Spacer()
 				VStack {
+					let theme = "Letters"
 					Image(systemName: "a.square")
 						.foregroundColor(.yellow)
-					Button("Letters") {
-						viewModel.changeTheme("Letters")
+					Button(theme) {
+						viewModel.changeTheme(theme)
 					}
 				}
 				Spacer()
 				VStack {
+					let theme = "Numbers"
 					Image(systemName: "123.rectangle")
 						.foregroundColor(.yellow)
-					Button("Numbers") {
-						viewModel.changeTheme("Numbers")
+					Button(theme) {
+						viewModel.changeTheme(theme)
+					}
+				}
+				Spacer()
+				VStack {
+					let theme = "Food"
+					Image(systemName: "fork.knife")
+						.foregroundColor(.yellow)
+					Button(theme) {
+						viewModel.changeTheme(theme)
 					}
 				}
 			}
@@ -63,7 +75,7 @@ struct EmojiMemoryGameView: View {
 							viewModel.choose(card)
 							if !card.isFaceup {
 								let utterance = AVSpeechUtterance(string: card.content)
-								//utterance.voice = AVSpeechSynthesisVoice(language: "en-IE")
+								utterance.voice = AVSpeechSynthesisVoice(language: "es-MX")
 								EmojiMemoryGameView.synthesizer.speak(utterance)
 							}
 						}

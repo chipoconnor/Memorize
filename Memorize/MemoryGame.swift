@@ -19,6 +19,7 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
 			cards.append(Card(content: content, id: "\(pairIndex+1)a"))
 			cards.append(Card(content: content, id: "\(pairIndex+1)b"))
 		}
+		// shuffle so the pairs are not together
 		cards.shuffle()
 	}
 
