@@ -7,6 +7,7 @@
 // This is the Model
 
 import Foundation
+import AVFoundation
 
 struct MemoryGame<CardContent> where CardContent: Equatable {
 	private(set) var cards: Array<Card>
@@ -16,8 +17,13 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
 			// add NumberOfPairsOfCards * 2 cards to cards array
 		for pairIndex in 0..<max(2, numberOfPairsOfCards) {
 			let content = cardContentFactory(pairIndex)
-			cards.append(Card(content: content, id: "\(pairIndex+1)a"))
-			cards.append(Card(content: content, id: "\(pairIndex+1)b"))
+			let utterance = AVSpeechUtterance(string: (content as! String).lowercased())
+			cards.append(Card(content: content,
+							  spoken: utterance,
+							  id: "\(pairIndex+1)a"))
+			cards.append(Card(content: content, 
+							  spoken: utterance,
+							  id: "\(pairIndex+1)b"))
 		}
 		// shuffle so the pairs are not together
 		cards.shuffle()
@@ -52,7 +58,7 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
 		var isFaceup = false
 		var isMatched = false
 		let content: CardContent
-
+		let spoken: AVSpeechUtterance
 		var id: String
 
 		var debugDescription: String {

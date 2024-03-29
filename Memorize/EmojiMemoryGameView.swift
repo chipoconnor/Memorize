@@ -13,86 +13,82 @@ struct EmojiMemoryGameView: View {
 	@ObservedObject var viewModel: EmojiMemoryGame
 	static let synthesizer = AVSpeechSynthesizer()
 
+	private let aspectRatio: CGFloat = 2/3
+
 	var body: some View {
 		VStack {
 			HStack {
-				Text("Memorize")
+				Text("Poppy's Game")
 					.font(.largeTitle)
 					.foregroundColor(.teal)
-				Spacer()
-				Text("\(EmojiMemoryGame.currentThemeName)")
-					.foregroundColor(.green)
-					.font(.title2)
 			}
-			ScrollView {
-				cards
-					.animation(.default, value: viewModel.cards)
-			}
+			cards
+				.animation(.default, value: viewModel.cards)
 			Spacer()
-			HStack {
-				VStack {
-					let theme = "Transport"
-					Image(systemName: "airplane.departure")
-						.foregroundColor(.yellow)
-					Button(theme) {
-						viewModel.changeTheme(theme)
-					}
-				}
-				Spacer()
-				VStack {
-					let theme = "Letters"
-					Image(systemName: "a.square")
-						.foregroundColor(.yellow)
-					Button(theme) {
-						viewModel.changeTheme(theme)
-					}
-				}
-				Spacer()
-				VStack {
-					let theme = "Numbers"
-					Image(systemName: "123.rectangle")
-						.foregroundColor(.yellow)
-					Button(theme) {
-						viewModel.changeTheme(theme)
-					}
-				}
-				Spacer()
-				VStack {
-					let theme = "Food"
-					Image(systemName: "fork.knife")
-						.foregroundColor(.yellow)
-					Button(theme) {
-						viewModel.changeTheme(theme)
-					}
-				}
-			}
-			.foregroundColor(.green)
-			.font(.title2)
+			buttons
 		}
 		.padding()
 	}
 
-	var cards: some View {
-		LazyVGrid(columns: [GridItem(.adaptive(minimum: 85), spacing: 0)], spacing: 0) {
-				ForEach(viewModel.cards) { card in CardView(card)
-						.aspectRatio(2/3, contentMode: .fit)
-						.padding(4)
-						.onTapGesture {
-							viewModel.choose(card)
-							if !card.isFaceup {
-								let utterance = AVSpeechUtterance(string: card.content)
-//								utterance.voice = AVSpeechSynthesisVoice(language: "es-MX")
-								utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-								EmojiMemoryGameView.synthesizer.speak(utterance)
-							}
-						}
+	private var cards: some View {
+		AspectVGrid(viewModel.cards, aspectRatio: aspectRatio) { card in CardView(card)
+				.padding(4)
+				.onTapGesture {
+					viewModel.choose(card)
+					EmojiMemoryGameView.synthesizer.speak(card.spoken)
 				}
+				.foregroundColor(.blue)
 		}
-		.foregroundColor(.blue)
+	}
+
+	private var buttons: some View {
+		HStack {
+			VStack {
+				Button("shuffle", systemImage: "shuffle",
+					   action: { viewModel.suffle()	})
+				.labelStyle(.iconOnly)
+				.foregroundColor(.yellow)
+			}
+			Spacer()
+			VStack {
+				let theme = "Transport"
+				Button("Transport", systemImage: "airplane.departure",
+					   action: { viewModel.changeTheme(theme)})
+				.labelStyle(.iconOnly)
+				.foregroundColor(.yellow)
+			}
+			Spacer()
+			VStack {
+				let theme = "Letters"
+				Button("Letters", systemImage: "a.square",
+					   action: { viewModel.changeTheme(theme)})
+				.labelStyle(.iconOnly)
+				.foregroundColor(.yellow)
+			}
+			Spacer()
+			VStack {
+				let theme = "Numbers"
+				Button("Numbers", systemImage: "123.rectangle",
+					   action: { viewModel.changeTheme(theme)})
+				.labelStyle(.iconOnly)
+				.foregroundColor(.yellow)
+			}
+			Spacer()
+			VStack {
+				let theme = "Food"
+				Button("Food", systemImage: "fork.knife",
+					   action: { viewModel.changeTheme(theme)})
+				.labelStyle(.iconOnly)
+				.foregroundColor(.yellow)
+			}
+		}
+		.foregroundColor(.green)
+		.font(.title2)
 	}
 }
 
-struct CardView: View {
+
+private struct CardView: View {
 	let card: MemoryGame<String>.Card
 
 	init(_ card: MemoryGame<String>.Card) {

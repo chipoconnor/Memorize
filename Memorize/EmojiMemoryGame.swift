@@ -37,13 +37,13 @@ class EmojiMemoryGame: ObservableObject {
 					]
 			]
 
-	static var currentThemeName = "Numbers"
+	static var currentThemeName = "Food"
 
 	private static func createMenoryGame(nameOfTheme: String) -> MemoryGame<String> {
 		// shuffle, so each game is different
 		if let emojiTheme = emojis[nameOfTheme]?.shuffled() {
 			currentThemeName = nameOfTheme
-			return MemoryGame<String>(numberOfPairsOfCards: Int.random(in: 4..<emojiTheme.count)) {
+			return MemoryGame<String>(numberOfPairsOfCards: min(Int.random(in: 4..<emojiTheme.count), 10)) {
 				pairIndex in
 				if emojiTheme.indices.contains(pairIndex) {
 					return emojiTheme[pairIndex]
@@ -71,10 +71,9 @@ class EmojiMemoryGame: ObservableObject {
 
 	func suffle() {
 		model.shuffle()
-//		print(model.cards)
 	}
 
-	func changeTheme(_ newTheme: String) {
+	func changeTheme(_ newTheme: String)  {
 		model = EmojiMemoryGame.createMenoryGame(nameOfTheme: newTheme)
 	}
 }
