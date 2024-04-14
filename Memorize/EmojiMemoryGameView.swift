@@ -11,9 +11,10 @@ import AVFoundation
 
 struct EmojiMemoryGameView: View {
 	@ObservedObject var viewModel: EmojiMemoryGame
+	
 	static let synthesizer = AVSpeechSynthesizer()
 
-	private let aspectRatio: CGFloat = 2/3
+	private let cardAspectRatio: CGFloat = 2/3
 
 	var body: some View {
 		VStack {
@@ -31,7 +32,7 @@ struct EmojiMemoryGameView: View {
 	}
 
 	private var cards: some View {
-		AspectVGrid(viewModel.cards, aspectRatio: aspectRatio) { card in CardView(card)
+		AspectVGrid(viewModel.cards, aspectRatio: cardAspectRatio) { card in CardView(card)
 				.padding(4)
 				.onTapGesture {
 					viewModel.choose(card)

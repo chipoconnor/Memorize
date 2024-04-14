@@ -25,7 +25,7 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
 							  spoken: utterance,
 							  id: "\(pairIndex+1)b"))
 		}
-		// shuffle so the pairs are not together
+		// shuffle so the pairs are not together in the array
 		cards.shuffle()
 	}
 
