@@ -60,7 +60,10 @@ class EmojiMemoryGame: ObservableObject {
 				createMenoryGame(nameOfTheme: currentThemeName)
 
 	var cards: Array<MemoryGame<String>.Card> {
-		return model.cards
+		model.cards
+	}
+	var color: Color {
+		.blue
 	}
 
 	// MARK: - Intents
