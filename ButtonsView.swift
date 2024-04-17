@@ -17,8 +17,9 @@ struct ButtonsView: View {
     var body: some View {
 			HStack {
 				VStack {
-					Button("shuffle", systemImage: "shuffle",
-						   action: { viewModel.suffle()	})
+					Button("shuffle", systemImage: "shuffle") {
+						withAnimation { viewModel.suffle()	}
+					}
 					.labelStyle(.iconOnly)
 					.foregroundColor(.yellow)
 				}

@@ -7,13 +7,9 @@
 // This is the View
 
 import SwiftUI
-import AVFoundation
 
 struct EmojiMemoryGameView: View {
 	@ObservedObject var viewModel: EmojiMemoryGame
-	
-	static let synthesizer = AVSpeechSynthesizer()
-	typealias topView = EmojiMemoryGameView
 
 	private let cardAspectRatio: CGFloat = 2/3
 	private let spacing: CGFloat = 4
@@ -27,7 +23,6 @@ struct EmojiMemoryGameView: View {
 			}
 			cards
 				.foregroundColor(viewModel.color)
-				.animation(.default, value: viewModel.cards)
 			Spacer()
 			ButtonsView(viewModel)
 		}
@@ -39,7 +34,7 @@ struct EmojiMemoryGameView: View {
 				.padding(spacing)
 				.onTapGesture {
 					viewModel.choose(card)
-					topView.synthesizer.speak(card.spoken)
+					viewModel.synthesizer.speak(card.content)
 				}
 		}
 	}

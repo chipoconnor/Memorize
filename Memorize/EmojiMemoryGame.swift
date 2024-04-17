@@ -39,6 +39,8 @@ class EmojiMemoryGame: ObservableObject {
 
 	static var currentThemeName = "Food"
 
+	var synthesizer = Speaker()
+
 	private static func createMenoryGame(nameOfTheme: String) -> MemoryGame<String> {
 		// shuffle, so each game is different
 		if let emojiTheme = emojis[nameOfTheme]?.shuffled() {
@@ -62,6 +64,7 @@ class EmojiMemoryGame: ObservableObject {
 	var cards: Array<MemoryGame<String>.Card> {
 		model.cards
 	}
+
 	var color: Color {
 		.blue
 	}
