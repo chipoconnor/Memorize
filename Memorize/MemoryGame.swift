@@ -9,20 +9,27 @@
 import Foundation
 
 struct MemoryGame<CardContent> where CardContent: Equatable {
-	
 	private(set) var cards: Array<Card>
+	private(set) var score = 0
 
 	init(numberOfPairsOfCards: Int, cardContentFactory: (Int) -> CardContent) {
 		cards = []
 			// add NumberOfPairsOfCards * 2 cards to cards array
 		for pairIndex in 0..<max(2, numberOfPairsOfCards) {
 			let content = cardContentFactory(pairIndex)
-			cards.append(Card(content: content,
+			cards.append(Card(isFaceup: false,
+							  hasBeenSeen: false,
+							  isMatched: false,
+							  content: content,
 							  id: "\(pairIndex+1)a"))
-			cards.append(Card(content: content, 
+			cards.append(Card(isFaceup: false,
+							  hasBeenSeen: false,
+							  isMatched: false,
+							  content: content,
 							  id: "\(pairIndex+1)b"))
 		}
 		// shuffle so the pairs are not together in the array
+		print("\n\nModel card count: \(cards.count)")
 		cards.shuffle()
 	}
 
@@ -38,6 +45,14 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
 					if cards[chosenIndex].content == cards[potentialMatchIndex].content {
 						cards[chosenIndex].isMatched = true
 						cards[potentialMatchIndex].isMatched = true
+						score += 2
+					} else {
+						if cards[chosenIndex].hasBeenSeen {
+							score -= 1
+						}
+						if cards[potentialMatchIndex].hasBeenSeen {
+							score -= 1
+						}
 					}
 				} else {
 					indexOfTheOneAndOnlyFaceUpCard = chosenIndex
@@ -52,13 +67,21 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
 	}
 
 	struct Card: Equatable, Identifiable, CustomDebugStringConvertible {
-		var isFaceup = false
+		var isFaceup = false 
+		{
+			didSet {
+				if oldValue && isFaceup {
+					hasBeenSeen = true
+				}
+			}
+		}
+		var hasBeenSeen = false
 		var isMatched = false
 		let content: CardContent
 		var id: String
 
 		var debugDescription: String {
-			"\(id): \(content) \(isFaceup ? "up" : "down") \(isMatched ? "matched" : "")"
+			"Card \(id): \(content) \(isFaceup ? "  up" : "down") \(isMatched ? "  matched" : "unmatched") \(hasBeenSeen ? "    Seen" : "not Seen")"
 		}
 	}
 }

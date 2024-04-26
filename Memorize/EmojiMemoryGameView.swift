@@ -9,7 +9,12 @@
 import SwiftUI
 
 struct EmojiMemoryGameView: View {
+
 	@ObservedObject var viewModel: EmojiMemoryGame
+
+	init(viewModel: EmojiMemoryGame) {
+		self.viewModel = viewModel
+	}
 
 	private let cardAspectRatio: CGFloat = 2/3
 	private let spacing: CGFloat = 4
@@ -18,23 +23,41 @@ struct EmojiMemoryGameView: View {
 		VStack {
 			HStack {
 				Text("Poppy's Game")
-					.font(.largeTitle)
-					.foregroundColor(.teal)
+				Spacer()
+				Text("Score: \(viewModel.score)")
 			}
+			.font(.largeTitle)
+			.foregroundColor(.teal)
 			cards
 				.foregroundColor(viewModel.color)
 			Spacer()
+			//shuffle
 			ButtonsView(viewModel)
 		}
 		.padding()
 	}
 
+//	private var shuffle: some View {
+//		VStack {
+//			Button("shuffle", systemImage: "shuffle") {
+//				withAnimation { viewModel.suffle()	}
+//			}
+//			.labelStyle(.iconOnly)
+//			.foregroundColor(.yellow)
+//			.font(.largeTitle)
+//		}
+//	}
+
 	private var cards: some View {
-		AspectVGrid(viewModel.cards, aspectRatio: cardAspectRatio) { card in CardView(card)
+		AspectVGrid(viewModel.cards, aspectRatio: cardAspectRatio) { card in
+			CardView(card)
 				.padding(spacing)
 				.onTapGesture {
-					viewModel.choose(card)
+					withAnimation(.easeInOut(duration: 2)) {
+						viewModel.choose(card)
+					}
 					viewModel.synthesizer.speak(card.content)
+//					print(card.debugDescription)
 				}
 		}
 	}

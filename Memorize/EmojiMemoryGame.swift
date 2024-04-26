@@ -9,27 +9,37 @@
 import SwiftUI
 
 class EmojiMemoryGame: ObservableObject {
+
+	static var currentThemeName = "Letters"
+
+	var synthesizer = Speaker()
+
+	@Published private var model: MemoryGame<String>
+
+	init(synthesizer: Speaker = Speaker(), model: MemoryGame<String> = createMemoryGame()) {
+		self.synthesizer = synthesizer
+		self.model = model
+	}
+
 	private static let emojis: [String: Array] = [
 		"Transport": [
-						"🚌","🛻","🚗","🚀","🚁","🚂"
-					   ,"⛵️","🛵","🏎️","🛰️","🌋","🗻","🎢","⚓️"
+					"🚌","🛻","🚗","🚀","🚁","🚂"
+					,"⛵️","🛵","🏎️","🛰️","🌋","🗻","🎢","⚓️"
 					  ],
 
 		"Letters": 	[
-					"A","B","C","D","E","F","G","H","I","J"
-				   ,"K","L","M","N","O","P","Q","R","S","T"
-				   ,"U","V","W","X","Y","Z"
-				   ,"a","b","c","d","e","f","g","h","i","j"
-					,"k","l","m","n","o","p","q","r","s","t"
-					,"u","v","w","x","y","z"
+					"A a","B b","C c","D d","E e","F f","G g","H h","I i","J j"
+					,"K k","L l","M m","N n","O o","P p","Q q","R r","S s","T t"
+					,"U u","V v","W w","X x","Y y","Z z"
+
 					],
 
 		"Numbers": [
-					 "0.00","0.01","0.02","0.03","0.04"
-					,"0","1","2","3","4","5","6","7","8","9"
-					,"10","20"
-					,"100","200"
-					,"1000","2000"
+					 "0","1","2","3","4","5","6","7","8","9"
+//					,"10","20"
+//					,"100","200"
+//					,"1000","2000"
+//					,"0.00","0.01","0.02","0.03","0.04"
 				   ],
 
 		"Food":		[
@@ -37,15 +47,14 @@ class EmojiMemoryGame: ObservableObject {
 					]
 			]
 
-	static var currentThemeName = "Food"
-
-	var synthesizer = Speaker()
-
-	private static func createMenoryGame(nameOfTheme: String) -> MemoryGame<String> {
+	private static func createMemoryGame() -> MemoryGame<String> {
+			// get a random key from the emojis dictionary
+			// currentThemeName = emojis.keys.randomElement()!
 		// shuffle, so each game is different
-		if let emojiTheme = emojis[nameOfTheme]?.shuffled() {
-			currentThemeName = nameOfTheme
-			return MemoryGame<String>(numberOfPairsOfCards: min(Int.random(in: 4..<emojiTheme.count), 10)) {
+		if let emojiTheme = emojis[currentThemeName]?.shuffled() {
+			return MemoryGame<String>(numberOfPairsOfCards: 
+							// the MIN between 4 and the number of elements in the array
+							min(Int.random(in: 4..<emojiTheme.count), 6)) {
 				pairIndex in
 				if emojiTheme.indices.contains(pairIndex) {
 					return emojiTheme[pairIndex]
@@ -54,12 +63,9 @@ class EmojiMemoryGame: ObservableObject {
 				}
 			}
 		} else {
-			return MemoryGame<String>(numberOfPairsOfCards: 0) { _ in return "⁉️\(nameOfTheme)" }
+			return MemoryGame<String>(numberOfPairsOfCards: 0) { _ in return "⁉️\(currentThemeName)" }
 		}
 	}
-
-	@Published private var model =
-				createMenoryGame(nameOfTheme: currentThemeName)
 
 	var cards: Array<MemoryGame<String>.Card> {
 		model.cards
@@ -67,6 +73,10 @@ class EmojiMemoryGame: ObservableObject {
 
 	var color: Color {
 		.blue
+	}
+
+	var score: Int {
+		model.score
 	}
 
 	// MARK: - Intents
@@ -80,6 +90,7 @@ class EmojiMemoryGame: ObservableObject {
 	}
 
 	func changeTheme(_ newTheme: String)  {
-		model = EmojiMemoryGame.createMenoryGame(nameOfTheme: newTheme)
+		EmojiMemoryGame.currentThemeName = newTheme
+		self.model = EmojiMemoryGame.createMemoryGame()
 	}
 }

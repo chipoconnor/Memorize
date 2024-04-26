@@ -17,19 +17,26 @@ struct CardView: View {
 	}
 
 	var body: some View {
-		Pie(endAngel: .degrees(240))
-			.opacity(Constants.Pie.opacity)
-			.overlay(
-				Text(card.content)
-					.font(.system(size: Constants.FontSize.largest))
-					.minimumScaleFactor(Constants.FontSize.scaleFactof)
-					.multilineTextAlignment(.center)
-					.aspectRatio(1, contentMode: .fit)
-					.padding(Constants.Pie.inset)
-			)
-			.padding(Constants.inset)
-			.cardify(isFaceUp: card.isFaceup)
-			.opacity(card.isFaceup || !card.isMatched ? 1 : 0)
+		VStack {
+			Text(card.id)
+				.foregroundStyle(.yellow)
+				.font(.title)
+			Pie(endAngel: .degrees(-90))
+				.opacity(Constants.Pie.opacity)
+				.overlay(
+					Text(card.content)
+						.font(.system(size: Constants.FontSize.largest))
+						.minimumScaleFactor(Constants.FontSize.scaleFactor)
+						.multilineTextAlignment(.center)
+						.aspectRatio(1, contentMode: .fit)
+						.padding(Constants.Pie.inset)
+						.rotationEffect(.degrees(card.isMatched ? 360 : 0))
+						.animation(.spin(duration: 2), value: card.isMatched)
+				)
+				.padding(Constants.inset)
+				.cardify(isFaceUp: card.isFaceup)
+				.opacity(card.isFaceup || !card.isMatched ? 1 : 0)
+		}
 	}
 
 	private struct Constants {
@@ -37,12 +44,18 @@ struct CardView: View {
 		struct FontSize {
 			static let largest: CGFloat = 200
 			static let smallest: CGFloat = 10
-			static let scaleFactof = smallest / largest
+			static let scaleFactor = smallest / largest
 		}
 		struct Pie {
 			static let opacity: CGFloat = 0.5
 			static let inset: CGFloat = 5
 		}
+	}
+}
+
+extension Animation {
+	static func spin(duration: TimeInterval) -> Animation {
+		.linear(duration: duration).repeatForever(autoreverses: false)
 	}
 }
 

@@ -14,50 +14,39 @@ struct ButtonsView: View {
 		self.viewModel = viewModel
 	}
 
-    var body: some View {
-			HStack {
-				VStack {
-					Button("shuffle", systemImage: "shuffle") {
-						withAnimation { viewModel.suffle()	}
-					}
-					.labelStyle(.iconOnly)
-					.foregroundColor(.yellow)
+	var body: some View {
+		HStack {
+				Button("shuffle", systemImage: "shuffle") {
+					withAnimation { viewModel.suffle()	}
 				}
 				Spacer()
 				VStack {
 					let theme = "Transport"
 					Button("Transport", systemImage: "airplane.departure",
 						   action: { viewModel.changeTheme(theme)})
-					.labelStyle(.iconOnly)
-					.foregroundColor(.yellow)
 				}
 				Spacer()
 				VStack {
 					let theme = "Letters"
 					Button("Letters", systemImage: "a.square",
 						   action: { viewModel.changeTheme(theme)})
-					.labelStyle(.iconOnly)
-					.foregroundColor(.yellow)
 				}
 				Spacer()
 				VStack {
 					let theme = "Numbers"
 					Button("Numbers", systemImage: "123.rectangle",
 						   action: { viewModel.changeTheme(theme)})
-					.labelStyle(.iconOnly)
-					.foregroundColor(.yellow)
 				}
 				Spacer()
 				VStack {
 					let theme = "Food"
 					Button("Food", systemImage: "fork.knife",
 						   action: { viewModel.changeTheme(theme)})
-					.labelStyle(.iconOnly)
-					.foregroundColor(.yellow)
 				}
 			}
-			.foregroundColor(.green)
-			.font(.title2)
+			.labelStyle(.iconOnly)
+			.foregroundColor(.yellow)
+			.font(.largeTitle)
 		}
 }
 

@@ -9,7 +9,8 @@ import AVFoundation
 
 
 class Speaker: NSObject, AVSpeechSynthesizerDelegate {
-	let synthesizer = AVSpeechSynthesizer()
+	var synthesizer = AVSpeechSynthesizer()
+	var startLanguage = "en-US"
 
 	override init() {
 		super.init()
@@ -17,13 +18,21 @@ class Speaker: NSObject, AVSpeechSynthesizerDelegate {
 	}
 
 	func speak(_ msg: String) {
-		let utterance = AVSpeechUtterance(string: msg.lowercased())
-
-		utterance.rate = 0.5
+		let utterance = AVSpeechUtterance(string: msg.last!.lowercased())
+		utterance.rate = 0.4
 		utterance.pitchMultiplier = 0.8
 		utterance.postUtteranceDelay = 0.2
 		utterance.volume = 0.8
-		utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+//		let voices = AVSpeechSynthesisVoice.speechVoices()
+//		for voice in voices {
+//			print(voice)
+//			if voice.language == currentLanguageCode() && voice.name == "Samantha" {
+//				utterance.voice = voice
+//				utterance.voice = AVSpeechSynthesisVoice(language: voice.language,
+//														 Namespace: voice.name)
+//				//break
+//			}
+//		}
 		synthesizer.speak(utterance)
 	}
 }
