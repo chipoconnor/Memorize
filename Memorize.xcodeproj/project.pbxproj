@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4512E2BA2BB5046600861AA6 /* AspectVGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4512E2B92BB5046600861AA6 /* AspectVGrid.swift */; };
+		4553676B2EF3C8FD0015CD03 /* FlyingNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4553676A2EF3C8FD0015CD03 /* FlyingNumber.swift */; };
 		45B7534E2BCCA31E003AF94A /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B7534D2BCCA31E003AF94A /* CardView.swift */; };
 		45B753502BCCB169003AF94A /* ButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B7534F2BCCB169003AF94A /* ButtonsView.swift */; };
 		45B753542BCCC194003AF94A /* Pie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B753532BCCC194003AF94A /* Pie.swift */; };
@@ -24,6 +25,7 @@
 
 /* Begin PBXFileReference section */
 		4512E2B92BB5046600861AA6 /* AspectVGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AspectVGrid.swift; sourceTree = SOURCE_ROOT; };
+		4553676A2EF3C8FD0015CD03 /* FlyingNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlyingNumber.swift; sourceTree = "<group>"; };
 		45B7534D2BCCA31E003AF94A /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		45B7534F2BCCB169003AF94A /* ButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsView.swift; sourceTree = SOURCE_ROOT; };
 		45B753532BCCC194003AF94A /* Pie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pie.swift; sourceTree = "<group>"; };
@@ -79,18 +81,19 @@
 		45FBDB27291482BA008E392B /* Memorize */ = {
 			isa = PBXGroup;
 			children = (
-				45FBDB28291482BA008E392B /* MemorizeApp.swift */,
-				45FBDB2A291482BA008E392B /* EmojiMemoryGameView.swift */,
-				45E4DEA12B9A401B00746EE5 /* EmojiMemoryGame.swift */,
-				45E4DE9F2B9A3D1400746EE5 /* MemoryGame.swift */,
 				4512E2B92BB5046600861AA6 /* AspectVGrid.swift */,
-				45B7534F2BCCB169003AF94A /* ButtonsView.swift */,
-				45B7534D2BCCA31E003AF94A /* CardView.swift */,
-				45B753532BCCC194003AF94A /* Pie.swift */,
-				45B753552BCE066C003AF94A /* Cardify.swift */,
-				45B753572BD07DFA003AF94A /* Speaker.swift */,
 				45FBDB2C291482BB008E392B /* Assets.xcassets */,
+				45B7534F2BCCB169003AF94A /* ButtonsView.swift */,
+				45B753552BCE066C003AF94A /* Cardify.swift */,
+				45B7534D2BCCA31E003AF94A /* CardView.swift */,
+				45E4DEA12B9A401B00746EE5 /* EmojiMemoryGame.swift */,
+				45FBDB2A291482BA008E392B /* EmojiMemoryGameView.swift */,
+				4553676A2EF3C8FD0015CD03 /* FlyingNumber.swift */,
+				45FBDB28291482BA008E392B /* MemorizeApp.swift */,
+				45E4DE9F2B9A3D1400746EE5 /* MemoryGame.swift */,
+				45B753532BCCC194003AF94A /* Pie.swift */,
 				45FBDB2E291482BB008E392B /* Preview Content */,
+				45B753572BD07DFA003AF94A /* Speaker.swift */,
 			);
 			path = Memorize;
 			sourceTree = "<group>";
@@ -178,6 +181,7 @@
 				45B753542BCCC194003AF94A /* Pie.swift in Sources */,
 				45B753562BCE066C003AF94A /* Cardify.swift in Sources */,
 				45FBDB29291482BA008E392B /* MemorizeApp.swift in Sources */,
+				4553676B2EF3C8FD0015CD03 /* FlyingNumber.swift in Sources */,
 				4512E2BA2BB5046600861AA6 /* AspectVGrid.swift in Sources */,
 				45B753502BCCB169003AF94A /* ButtonsView.swift in Sources */,
 				45B753582BD07DFA003AF94A /* Speaker.swift in Sources */,
@@ -320,15 +324,16 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ibchip.Memorize;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ibchip.poppy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -351,15 +356,16 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ibchip.Memorize;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ibchip.poppy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -377,7 +383,7 @@
 				45FBDB32291482BB008E392B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		45FBDB33291482BB008E392B /* Build configuration list for PBXNativeTarget "Memorize" */ = {
 			isa = XCConfigurationList;
@@ -386,7 +392,7 @@
 				45FBDB35291482BB008E392B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};

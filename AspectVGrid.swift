@@ -39,11 +39,10 @@ struct AspectVGrid<Item: Identifiable, ItemView: View>: View {
 	private func gridItemThatFits (
 		count: Int,
 		size: CGSize,
-		atAspectRation aspectRation: CGFloat) -> CGFloat {
+		atAspectRation aspectRation: CGFloat
+	) -> CGFloat {
 			let count = CGFloat(count)
 			var columnCount = 1.0
-				//print("Grid size: \(size)")
-
 			repeat {
 				let width = size.width / columnCount
 				let height = width / aspectRation

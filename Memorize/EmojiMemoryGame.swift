@@ -9,17 +9,19 @@
 import SwiftUI
 
 class EmojiMemoryGame: ObservableObject {
+	typealias Card = MemoryGame<String>.Card
 
 	static var currentThemeName = "Letters"
 
-	var synthesizer = Speaker()
+	
+//	var synthesizer = Speaker()
 
-	@Published private var model: MemoryGame<String>
-
-	init(synthesizer: Speaker = Speaker(), model: MemoryGame<String> = createMemoryGame()) {
-		self.synthesizer = synthesizer
-		self.model = model
-	}
+//	@Published private var model: MemoryGame<String>
+//	init(synthesizer: Speaker = Speaker(),
+//		 model: MemoryGame<String> = createMemoryGame()) {
+//		self.synthesizer = synthesizer
+//		self.model = model
+//	}
 
 	private static let emojis: [String: Array] = [
 		"Transport": [
@@ -50,10 +52,12 @@ class EmojiMemoryGame: ObservableObject {
 	private static func createMemoryGame() -> MemoryGame<String> {
 			// get a random key from the emojis dictionary
 			// currentThemeName = emojis.keys.randomElement()!
-		// shuffle, so each game is different
+			// shuffle, so each game is different
 		if let emojiTheme = emojis[currentThemeName]?.shuffled() {
-			return MemoryGame<String>(numberOfPairsOfCards: 
-							// the MIN between 4 and the number of elements in the array
+				// numberOfPairsOfCards: is the MIN between
+				//  (a random number between 4 and the number of array elements)
+				//	and 6
+			return MemoryGame<String>(numberOfPairsOfCards:
 							min(Int.random(in: 4..<emojiTheme.count), 6)) {
 				pairIndex in
 				if emojiTheme.indices.contains(pairIndex) {
@@ -67,7 +71,10 @@ class EmojiMemoryGame: ObservableObject {
 		}
 	}
 
-	var cards: Array<MemoryGame<String>.Card> {
+	@Published private var model = createMemoryGame()
+
+
+	var cards: Array<Card> {
 		model.cards
 	}
 
@@ -81,12 +88,12 @@ class EmojiMemoryGame: ObservableObject {
 
 	// MARK: - Intents
 
-	func choose(_ card: MemoryGame<String>.Card) {
-		model.choose(card)
-	}
-
 	func suffle() {
 		model.shuffle()
+	}
+
+	func choose(_ card: Card) {
+		model.choose(card)
 	}
 
 	func changeTheme(_ newTheme: String)  {
