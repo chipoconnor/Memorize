@@ -90,19 +90,6 @@ struct EmojiMemoryGameView: View {
 		.id(viewModel.gameId)  // Force view recreation on new game
 	}
 
-//	private var cards: some View {
-//		AspectVGrid(viewModel.cards, aspectRatio: aspectRatio) { card in
-//			if isDealt(card) {
-//				view(for: card)
-//					.padding(spacing)
-//					.overlay(FlyingNumber(number: scoreChange(causedBy: card)))
-//					.zIndex(scoreChange(causedBy: card) != 0 ? 100 : 0)
-//					.onTapGesture {
-//						choose(card)
-//					}
-//			}
-//		}
-//	}
 	private func view(for card: Card) -> some View {
 		CardView(card)
 			.matchedGeometryEffect(id: card.id, in: dealingNamespace)

@@ -16,28 +16,6 @@ struct CardView: View {
 		self.card = card
 	}
 
-//	var body: some View {
-//		VStack {
-//			Text(card.id)
-//				.foregroundStyle(.yellow)
-//				.font(.title)
-//			Pie(endAngle: .degrees(-90))
-//				.opacity(Constants.Pie.opacity)
-//				.overlay(
-//					Text(card.content)
-//						.font(.system(size: Constants.FontSize.largest))
-//						.minimumScaleFactor(Constants.FontSize.scaleFactor)
-//						.multilineTextAlignment(.center)
-//						.aspectRatio(1, contentMode: .fit)
-//						.padding(Constants.Pie.inset)
-//						.rotationEffect(.degrees(card.isMatched ? 360 : 0))
-//						.animation(.spin(duration: 2), value: card.isMatched)
-//				)
-//				.padding(Constants.inset)
-//				.cardify(isFaceUp: card.isFaceup)
-//				.opacity(card.isFaceup || !card.isMatched ? 1 : 0)
-//		}
-//	}
 	var body: some View {
 		TimelineView(.animation) { timeline in
 			if card.isFaceUp || !card.isMatched {
