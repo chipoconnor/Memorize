@@ -16,40 +16,29 @@ struct ButtonsView: View {
 
 	var body: some View {
 		HStack {
-				Button("shuffle", systemImage: "shuffle") {
-					withAnimation { viewModel.suffle()	}
-				}
-				Spacer()
-				VStack {
-					let theme = "Transport"
-					Button("Transport", systemImage: "airplane.departure",
-						   action: { viewModel.changeTheme(theme)})
-				}
-				Spacer()
-				VStack {
-					let theme = "Letters"
-					Button("Letters", systemImage: "a.square",
-						   action: { viewModel.changeTheme(theme)})
-				}
-				Spacer()
-				VStack {
-					let theme = "Numbers"
-					Button("Numbers", systemImage: "123.rectangle",
-						   action: { viewModel.changeTheme(theme)})
-				}
-				Spacer()
-				VStack {
-					let theme = "Food"
-					Button("Food", systemImage: "fork.knife",
-						   action: { viewModel.changeTheme(theme)})
+			Button("Shuffle", systemImage: "shuffle") {
+				withAnimation { 
+					viewModel.shuffle()
 				}
 			}
-			.labelStyle(.iconOnly)
-			.foregroundColor(.yellow)
-			.font(.largeTitle)
+			Spacer()
+			
+			ForEach(Theme.allThemes) { theme in
+				Button(theme.name, systemImage: theme.icon) {
+					withAnimation {
+						viewModel.changeTheme(to: theme)
+					}
+				}
+				.foregroundColor(viewModel.currentTheme == theme ? .white : .yellow)
+				.opacity(viewModel.currentTheme == theme ? 1.0 : 0.7)
+				
+				if theme != Theme.allThemes.last {
+					Spacer()
+				}
+			}
 		}
+		.labelStyle(.iconOnly)
+		.font(.largeTitle)
+	}
 }
 
-//#Preview {
-//	ButtonsView( <#EmojiMemoryGame#>)
-//}

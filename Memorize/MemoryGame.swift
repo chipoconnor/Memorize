@@ -14,25 +14,13 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
 
 	init(numberOfPairsOfCards: Int, cardContentFactory: (Int) -> CardContent) {
 		cards = []
-			// add NumberOfPairsOfCards * 2 cards to cards array
+		// Add numberOfPairsOfCards * 2 cards to cards array
 		for pairIndex in 0..<max(2, numberOfPairsOfCards) {
 			let content = cardContentFactory(pairIndex)
 			cards.append(Card(content: content, id: "\(pairIndex+1)a"))
 			cards.append(Card(content: content, id: "\(pairIndex+1)b"))
-//			cards.append(Card(isFaceup: false,
-//							  hasBeenSeen: false,
-//							  isMatched: false,
-//							  content: content,
-//							  id: "\(pairIndex+1)a"))
-//			cards.append(Card(isFaceup: false,
-//							  hasBeenSeen: false,
-//							  isMatched: false,
-//							  content: content,
-//							  id: "\(pairIndex+1)b"))
 		}
-		// shuffle so the pairs are not together in the array
-//		print("\n\nModel card count: \(cards.count)")
-//		cards.shuffle()
+		cards.shuffle()
 	}
 
 	private var indexOfTheOneAndOnlyFaceUpCard: Int? {

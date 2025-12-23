@@ -10,94 +10,75 @@ import SwiftUI
 
 class EmojiMemoryGame: ObservableObject {
 	typealias Card = MemoryGame<String>.Card
-
-	static var currentThemeName = "Letters"
-
 	
-//	var synthesizer = Speaker()
-
-//	@Published private var model: MemoryGame<String>
-//	init(synthesizer: Speaker = Speaker(),
-//		 model: MemoryGame<String> = createMemoryGame()) {
-//		self.synthesizer = synthesizer
-//		self.model = model
-//	}
-
-	private static let emojis: [String: Array] = [
-		"Transport": [
-					"🚌","🛻","🚗","🚀","🚁","🚂"
-					,"⛵️","🛵","🏎️","🛰️","🌋","🗻","🎢","⚓️"
-					  ],
-
-		"Letters": 	[
-					"A a","B b","C c","D d","E e","F f","G g","H h","I i","J j"
-					,"K k","L l","M m","N n","O o","P p","Q q","R r","S s","T t"
-					,"U u","V v","W w","X x","Y y","Z z"
-
-					],
-
-		"Numbers": [
-					 "0","1","2","3","4","5","6","7","8","9"
-//					,"10","20"
-//					,"100","200"
-//					,"1000","2000"
-//					,"0.00","0.01","0.02","0.03","0.04"
-				   ],
-
-		"Food":		[
-					"🥕","🍏","🥔","🍌","🥑","🥨","🍕","🫔","🌮","🥭"
-					]
-			]
-
-	private static func createMemoryGame() -> MemoryGame<String> {
-			// get a random key from the emojis dictionary
-			// currentThemeName = emojis.keys.randomElement()!
-			// shuffle, so each game is different
-		if let emojiTheme = emojis[currentThemeName]?.shuffled() {
-				// numberOfPairsOfCards: is the MIN between
-				//  (a random number between 4 and the number of array elements)
-				//	and 6
-			return MemoryGame<String>(numberOfPairsOfCards:
-							min(Int.random(in: 4..<emojiTheme.count), 6)) {
-				pairIndex in
-				if emojiTheme.indices.contains(pairIndex) {
-					return emojiTheme[pairIndex]
-				} else {
-					return "⁉️"
-				}
-			}
-		} else {
-			return MemoryGame<String>(numberOfPairsOfCards: 0) { _ in return "⁉️\(currentThemeName)" }
-		}
+	@Published private var model: MemoryGame<String>
+	@Published private(set) var currentTheme: Theme
+	@Published private(set) var gameId = UUID()
+	
+	var synthesizer = Speaker()
+	
+	init(theme: Theme = .letters) {
+		self.currentTheme = theme
+		self.model = EmojiMemoryGame.createMemoryGame(with: theme)
 	}
 
-	@Published private var model = createMemoryGame()
-
+	private static func createMemoryGame(with theme: Theme) -> MemoryGame<String> {
+		let shuffledEmojis = theme.emojis.shuffled()
+		let numberOfPairs = min(theme.numberOfPairs, shuffledEmojis.count)
+		
+		return MemoryGame(numberOfPairsOfCards: numberOfPairs) { pairIndex in
+			if shuffledEmojis.indices.contains(pairIndex) {
+				return shuffledEmojis[pairIndex]
+			} else {
+				return "⁉️"
+			}
+		}
+	}
 
 	var cards: Array<Card> {
 		model.cards
 	}
 
 	var color: Color {
-		.blue
+		currentTheme.color
 	}
 
 	var score: Int {
 		model.score
 	}
+	
+	var isGameComplete: Bool {
+		cards.allSatisfy { $0.isMatched }
+	}
 
 	// MARK: - Intents
 
-	func suffle() {
+	func shuffle() {
 		model.shuffle()
 	}
 
 	func choose(_ card: Card) {
+		let cardIndex = model.cards.firstIndex(where: { $0.id == card.id })
+		let wasAlreadyFaceUp = cardIndex.map { model.cards[$0].isFaceUp } ?? true
+		
 		model.choose(card)
+		
+		if !wasAlreadyFaceUp, let index = cardIndex, model.cards[index].isFaceUp {
+			synthesizer.speak(card.content)
+		}
 	}
 
-	func changeTheme(_ newTheme: String)  {
-		EmojiMemoryGame.currentThemeName = newTheme
-		self.model = EmojiMemoryGame.createMemoryGame()
+	func changeTheme(to newTheme: Theme) {
+		currentTheme = newTheme
+		model = EmojiMemoryGame.createMemoryGame(with: newTheme)
+		gameId = UUID()
+	}
+	
+	func newGame() {
+		model = EmojiMemoryGame.createMemoryGame(with: currentTheme)
+		gameId = UUID()
 	}
 }
+
+
+

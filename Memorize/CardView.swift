@@ -10,7 +10,6 @@ import SwiftUI
 struct CardView: View {
 	typealias Card = MemoryGame<String>.Card
 
-	// let card: MemoryGame<String>.Card
 	let card: Card
 
 	init(_ card: Card) {
@@ -61,7 +60,7 @@ struct CardView: View {
 			.multilineTextAlignment(.center)
 			.aspectRatio(1, contentMode: .fit)
 			.rotationEffect(.degrees(card.isMatched ? 360 : 0))
-			.animation(.spin(duration: 1), value: card.isMatched)
+			.animation(card.isMatched ? .spin(duration: 1) : .default, value: card.isMatched)
 	}
 	private struct Constants {
 		static let inset: CGFloat = 5
@@ -91,11 +90,11 @@ struct CardView_Previews: PreviewProvider {
 			HStack {
 				CardView(Card(isFaceUp: true,content: "X",id: "X1"))
 					.aspectRatio(4/3, contentMode: .fit)
-				CardView(Card(content: "X",id: "X2"))
+				CardView(Card(isFaceUp: true,content: "X",id: "X2"))
 			}
 			HStack {
-				CardView(Card(isFaceUp: true, isMatched: true, content: "This is a very long string and I hope it fits", id: "Y1"))
-				CardView(Card(isMatched: true, content: "Y", id: "Y2"))
+				CardView(Card(isFaceUp: true, isMatched: true, content: "This is a very long string I hope fits", id: "Y1"))
+				CardView(Card(isFaceUp: true, isMatched: true, content: "Y", id: "Y2"))
 			}
 		}
 			.padding()

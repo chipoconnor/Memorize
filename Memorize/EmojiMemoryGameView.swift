@@ -28,57 +28,81 @@ struct EmojiMemoryGameView: View {
 		VStack {
 			HStack {
 				Text("Poppy's Choice")
+					.font(.largeTitle)
+					.foregroundStyle(viewModel.color.gradient)
+				
 				Spacer()
-				Text("Score: \(viewModel.score)")
+				
+				VStack(alignment: .trailing) {
+					Text(viewModel.currentTheme.name)
+						.font(.headline)
+						.foregroundStyle(.secondary)
+					Text("Score: \(viewModel.score)")
+						.font(.title2)
+						.fontWeight(.bold)
+						.foregroundStyle(viewModel.color)
+				}
 			}
-			.font(.largeTitle)
-			.foregroundColor(.teal)
-			cards.foregroundColor(viewModel.color)
+			
+			cards
+				.foregroundColor(viewModel.color)
+			
 			Spacer()
-				//shuffle
+			
 			ButtonsView(viewModel)
 		}
 		.padding()
-	}
-
-		//	private var shuffle: some View {
-		//		VStack {
-		//			Button("shuffle", systemImage: "shuffle") {
-		//				withAnimation { viewModel.suffle()	}
-		//			}
-		//			.labelStyle(.iconOnly)
-		//			.foregroundColor(.yellow)
-		//			.font(.largeTitle)
-		//		}
-		//	}
-
-		//	private var cards: some View {
-		//		AspectVGrid(viewModel.cards, aspectRatio: cardAspectRatio) { card in
-		//			CardView(card)
-		//				.padding(spacing)
-		//				.onTapGesture {
-		//					withAnimation(.easeInOut(duration: 2)) {
-		//						viewModel.choose(card)
-		//					}
-		////					viewModel.synthesizer.speak(card.content)
-		////					print(card.debugDescription)
-		//				}
-		//		}
-		//	}
-
-	private var cards: some View {
-		AspectVGrid(viewModel.cards, aspectRatio: aspectRatio) { card in
-			if isDealt(card) {
-				view(for: card)
-					.padding(spacing)
-					.overlay(FlyingNumber(number: scoreChange(causedBy: card)))
-					.zIndex(scoreChange(causedBy: card) != 0 ? 100 : 0)
-					.onTapGesture {
-						choose(card)
-					}
+		.alert("Congratulations! 🎉", isPresented: .constant(viewModel.isGameComplete)) {
+			Button("New Game") {
+				withAnimation {
+					viewModel.newGame()
+				}
 			}
+			Button("Change Theme") {
+				// The alert will dismiss and user can select theme
+			}
+		} message: {
+			Text("You completed the game with a score of \(viewModel.score)!")
 		}
 	}
+
+//	private var shuffle: some View {
+//		VStack {
+//			Button("shuffle", systemImage: "shuffle") {
+//				withAnimation { viewModel.suffle()	}
+//			}
+//			.labelStyle(.iconOnly)
+//			.foregroundColor(.yellow)
+//			.font(.largeTitle)
+//		}
+//	}
+
+	private var cards: some View {
+		AspectVGrid(viewModel.cards, aspectRatio: cardAspectRatio) { card in
+			CardView(card)
+				.padding(spacing)
+				.onTapGesture {
+					withAnimation(.easeInOut(duration: 2)) {
+						viewModel.choose(card)
+					}
+				}
+		}
+		.id(viewModel.gameId)  // Force view recreation on new game
+	}
+
+//	private var cards: some View {
+//		AspectVGrid(viewModel.cards, aspectRatio: aspectRatio) { card in
+//			if isDealt(card) {
+//				view(for: card)
+//					.padding(spacing)
+//					.overlay(FlyingNumber(number: scoreChange(causedBy: card)))
+//					.zIndex(scoreChange(causedBy: card) != 0 ? 100 : 0)
+//					.onTapGesture {
+//						choose(card)
+//					}
+//			}
+//		}
+//	}
 	private func view(for card: Card) -> some View {
 		CardView(card)
 			.matchedGeometryEffect(id: card.id, in: dealingNamespace)
@@ -136,16 +160,13 @@ struct EmojiMemoryGameView: View {
 		}
 	}
 }
-//		struct EmojiMemoryGameView_Previews: PreviewProvider {
-//		static var previews: some View {
-//			EmojiMemoryGameView(viewModel: EmojiMemoryGame())
-//	}
 
 struct EmojiMemoryGameView_Previews: PreviewProvider {
 	static var previews: some View {
+//		EmojiMemoryGameView(viewModel: EmojiMemoryGame())
+//			.preferredColorScheme(.lignt)
 		EmojiMemoryGameView(viewModel: EmojiMemoryGame())
 			.preferredColorScheme(.dark)
-			//		EmojiMemoryGameView(viewModel: EmojiMemoryGame())
-			//			.preferredColorScheme(.light)
 	}
 }
+
