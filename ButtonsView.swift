@@ -29,9 +29,9 @@ struct ButtonsView: View {
 						viewModel.changeTheme(to: theme)
 					}
 				}
-				.foregroundColor(viewModel.currentTheme == theme ? .white : .yellow)
-				.opacity(viewModel.currentTheme == theme ? 1.0 : 0.7)
-				
+				.foregroundColor(theme.color)
+				.opacity(viewModel.currentTheme == theme ? 1.5 : 0.5)
+
 				if theme != Theme.allThemes.last {
 					Spacer()
 				}
