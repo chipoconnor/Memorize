@@ -59,8 +59,6 @@ struct AspectVGrid<Item: Identifiable, ItemView: View>: View {
 
 struct AspectVGrid_Previews: PreviewProvider {
 	static var previews: some View {
-//		EmojiMemoryGameView(viewModel: EmojiMemoryGame())
-//			.preferredColorScheme(.dark)
 		EmojiMemoryGameView(viewModel: EmojiMemoryGame())
 			.preferredColorScheme(.light)
 	}

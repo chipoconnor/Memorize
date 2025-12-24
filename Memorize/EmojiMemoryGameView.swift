@@ -20,10 +20,6 @@ struct EmojiMemoryGameView: View {
 	private let deckWidth: CGFloat = 50
 	private let cardAspectRatio: CGFloat = 2/3
 
-		//	init(viewModel: EmojiMemoryGame) {
-		//		self.viewModel = viewModel
-		//	}
-
 	var body: some View {
 		VStack {
 			HStack {
