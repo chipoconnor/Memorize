@@ -20,12 +20,20 @@ struct EmojiMemoryGameView: View {
 	private let deckWidth: CGFloat = 50
 	private let cardAspectRatio: CGFloat = 2/3
 
+	private var titleColor: AnyShapeStyle {
+		if #available(iOS 16.0, *) {
+			return AnyShapeStyle(viewModel.color.gradient)
+		} else {
+			return AnyShapeStyle(viewModel.color)
+		}
+	}
+
 	var body: some View {
 		VStack {
 			HStack {
 				Text("Poppy's Choice")
 					.font(.largeTitle)
-					.foregroundStyle(viewModel.color.gradient)
+					.foregroundStyle(titleColor)
 				
 				Spacer()
 				
