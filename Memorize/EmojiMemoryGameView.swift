@@ -66,17 +66,6 @@ struct EmojiMemoryGameView: View {
 		}
 	}
 
-//	private var shuffle: some View {
-//		VStack {
-//			Button("shuffle", systemImage: "shuffle") {
-//				withAnimation { viewModel.suffle()	}
-//			}
-//			.labelStyle(.iconOnly)
-//			.foregroundColor(.yellow)
-//			.font(.largeTitle)
-//		}
-//	}
-
 	private var cards: some View {
 		AspectVGrid(viewModel.cards, aspectRatio: cardAspectRatio) { card in
 			CardView(card)
