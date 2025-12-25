@@ -50,11 +50,11 @@ class Speaker: NSObject, AVSpeechSynthesizerDelegate {
 	// Convert single letters to phonetic spellings to avoid "Capital" prefix
 	private func getIPAForLetter(_ letter: Character) -> String {
 		let letterMap: [Character: String] = [
-			"A": "aye", "B": "bee", "C": "see", "D": "dee", "E": "ee",
-			"F": "eff", "G": "jee", "H": "aych", "I": "eye", "J": "jay",
-			"K": "kay", "L": "ell", "M": "em", "N": "en", "O": "oh",
-			"P": "pee", "Q": "cue", "R": "are", "S": "ess", "T": "tee",
-			"U": "you", "V": "vee", "W": "double you", "X": "ex", "Y": "why", "Z": "zee"
+			"A": "a", "B": "bee", "C": "see", "D": "dee", "E": "e",
+			"F": "f", "G": "jee", "H": "aych", "I": "eye", "J": "jay",
+			"K": "kay", "L": "ell", "M": "m", "N": "en", "O": "oh",
+			"P": "pee", "Q": "cue", "R": "are", "S": "s", "T": "tee",
+			"U": "you", "V": "v", "W": "double you", "X": "x", "Y": "why", "Z": "zee"
 		]
 		
 		let upperLetter = Character(letter.uppercased())

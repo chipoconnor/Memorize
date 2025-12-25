@@ -19,8 +19,8 @@ struct EmojiMemoryGameView: View {
 	private let dealInterval: TimeInterval = 0.15
 	private let deckWidth: CGFloat = 50
 	private let cardAspectRatio: CGFloat = 2/3
-
-	private var titleColor: AnyShapeStyle {
+	
+	private var titleGradient: AnyShapeStyle {
 		if #available(iOS 16.0, *) {
 			return AnyShapeStyle(viewModel.color.gradient)
 		} else {
@@ -33,7 +33,7 @@ struct EmojiMemoryGameView: View {
 			HStack {
 				Text("Poppy's Choice")
 					.font(.largeTitle)
-					.foregroundStyle(titleColor)
+					.foregroundStyle(titleGradient)
 				
 				Spacer()
 				
@@ -72,7 +72,7 @@ struct EmojiMemoryGameView: View {
 
 	private var cards: some View {
 		AspectVGrid(viewModel.cards, aspectRatio: cardAspectRatio) { card in
-			CardView(card)
+			CardView(card, themeIcon: viewModel.currentTheme.icon)
 				.padding(spacing)
 				.onTapGesture {
 					withAnimation(.easeInOut(duration: 2)) {
@@ -84,7 +84,7 @@ struct EmojiMemoryGameView: View {
 	}
 
 	private func view(for card: Card) -> some View {
-		CardView(card)
+		CardView(card, themeIcon: viewModel.currentTheme.icon)
 			.matchedGeometryEffect(id: card.id, in: dealingNamespace)
 			.transition(.asymmetric(insertion: .identity, removal: .identity))
 	}

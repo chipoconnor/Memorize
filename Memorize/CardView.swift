@@ -11,9 +11,11 @@ struct CardView: View {
 	typealias Card = MemoryGame<String>.Card
 
 	let card: Card
+	var themeIcon: String?
 
-	init(_ card: Card) {
+	init(_ card: Card, themeIcon: String? = nil) {
 		self.card = card
+		self.themeIcon = themeIcon
 	}
 
 	var body: some View {
@@ -23,7 +25,7 @@ struct CardView: View {
 					.opacity(Constants.Pie.opacity)
 					.overlay(cardContents.padding(Constants.Pie.inset))
 					.padding(Constants.inset)
-					.cardify(isFaceUp: card.isFaceUp)
+					.cardify(isFaceUp: card.isFaceUp, themeIcon: themeIcon)
 					.transition(.scale)
 			} else {
 				Color.clear

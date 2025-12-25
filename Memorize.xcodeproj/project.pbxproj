@@ -11,6 +11,8 @@
 		453F95A12EFA338D000299CF /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453F95A02EFA338D000299CF /* Theme.swift */; };
 		453F95A32EFA5C6D000299CF /* LoggingSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453F95A22EFA5C6D000299CF /* LoggingSetup.swift */; };
 		4553676B2EF3C8FD0015CD03 /* FlyingNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4553676A2EF3C8FD0015CD03 /* FlyingNumber.swift */; };
+		4581EC8C2EFCA544005AD80B /* CardBackDesignOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4581EC8B2EFCA543005AD80B /* CardBackDesignOptions.swift */; };
+		4581EC8E2EFCBA79005AD80B /* PoppyIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4581EC8D2EFCBA79005AD80B /* PoppyIconView.swift */; };
 		45B7534E2BCCA31E003AF94A /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B7534D2BCCA31E003AF94A /* CardView.swift */; };
 		45B753502BCCB169003AF94A /* ButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B7534F2BCCB169003AF94A /* ButtonsView.swift */; };
 		45B753542BCCC194003AF94A /* Pie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B753532BCCC194003AF94A /* Pie.swift */; };
@@ -30,6 +32,8 @@
 		453F95A02EFA338D000299CF /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		453F95A22EFA5C6D000299CF /* LoggingSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingSetup.swift; sourceTree = "<group>"; };
 		4553676A2EF3C8FD0015CD03 /* FlyingNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlyingNumber.swift; sourceTree = "<group>"; };
+		4581EC8B2EFCA543005AD80B /* CardBackDesignOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBackDesignOptions.swift; sourceTree = "<group>"; };
+		4581EC8D2EFCBA79005AD80B /* PoppyIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoppyIconView.swift; sourceTree = "<group>"; };
 		45B7534D2BCCA31E003AF94A /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		45B7534F2BCCB169003AF94A /* ButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsView.swift; sourceTree = SOURCE_ROOT; };
 		45B753532BCCC194003AF94A /* Pie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pie.swift; sourceTree = "<group>"; };
@@ -88,18 +92,20 @@
 				4512E2B92BB5046600861AA6 /* AspectVGrid.swift */,
 				45FBDB2C291482BB008E392B /* Assets.xcassets */,
 				45B7534F2BCCB169003AF94A /* ButtonsView.swift */,
+				4581EC8B2EFCA543005AD80B /* CardBackDesignOptions.swift */,
 				45B753552BCE066C003AF94A /* Cardify.swift */,
 				45B7534D2BCCA31E003AF94A /* CardView.swift */,
 				45E4DEA12B9A401B00746EE5 /* EmojiMemoryGame.swift */,
 				45FBDB2A291482BA008E392B /* EmojiMemoryGameView.swift */,
 				4553676A2EF3C8FD0015CD03 /* FlyingNumber.swift */,
+				453F95A22EFA5C6D000299CF /* LoggingSetup.swift */,
 				45FBDB28291482BA008E392B /* MemorizeApp.swift */,
 				45E4DE9F2B9A3D1400746EE5 /* MemoryGame.swift */,
 				45B753532BCCC194003AF94A /* Pie.swift */,
 				45FBDB2E291482BB008E392B /* Preview Content */,
 				45B753572BD07DFA003AF94A /* Speaker.swift */,
 				453F95A02EFA338D000299CF /* Theme.swift */,
-				453F95A22EFA5C6D000299CF /* LoggingSetup.swift */,
+				4581EC8D2EFCBA79005AD80B /* PoppyIconView.swift */,
 			);
 			path = Memorize;
 			sourceTree = "<group>";
@@ -195,6 +201,8 @@
 				453F95A12EFA338D000299CF /* Theme.swift in Sources */,
 				45B7534E2BCCA31E003AF94A /* CardView.swift in Sources */,
 				45E4DEA22B9A401B00746EE5 /* EmojiMemoryGame.swift in Sources */,
+				4581EC8E2EFCBA79005AD80B /* PoppyIconView.swift in Sources */,
+				4581EC8C2EFCA544005AD80B /* CardBackDesignOptions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
