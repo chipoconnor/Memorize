@@ -32,6 +32,8 @@
 		453F95A02EFA338D000299CF /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		453F95A22EFA5C6D000299CF /* LoggingSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingSetup.swift; sourceTree = "<group>"; };
 		4553676A2EF3C8FD0015CD03 /* FlyingNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlyingNumber.swift; sourceTree = "<group>"; };
+		4562479E2F00F2F0000BF376 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		4562479F2F00F2F9000BF376 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		4581EC8B2EFCA543005AD80B /* CardBackDesignOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBackDesignOptions.swift; sourceTree = "<group>"; };
 		4581EC8D2EFCBA79005AD80B /* PoppyIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoppyIconView.swift; sourceTree = "<group>"; };
 		45B7534D2BCCA31E003AF94A /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
@@ -75,6 +77,8 @@
 				45FBDB27291482BA008E392B /* Memorize */,
 				45FBDB26291482BA008E392B /* Products */,
 				45B753592BD0D092003AF94A /* Frameworks */,
+				4562479E2F00F2F0000BF376 /* README.md */,
+				4562479F2F00F2F9000BF376 /* .gitignore */,
 			);
 			sourceTree = "<group>";
 		};
