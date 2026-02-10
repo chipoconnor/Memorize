@@ -143,8 +143,8 @@ struct EmojiMemoryGameView: View {
 
 struct EmojiMemoryGameView_Previews: PreviewProvider {
 	static var previews: some View {
-//		EmojiMemoryGameView(viewModel: EmojiMemoryGame())
-//			.preferredColorScheme(.lignt)
+		EmojiMemoryGameView(viewModel: EmojiMemoryGame())
+			.preferredColorScheme(.light)
 		EmojiMemoryGameView(viewModel: EmojiMemoryGame())
 			.preferredColorScheme(.dark)
 	}
