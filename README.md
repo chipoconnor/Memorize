@@ -7,8 +7,7 @@ A card matching memory game built with SwiftUI that features themed emoji pairs,
 - 🎴 **Memory Card Game**: Match pairs of emoji cards to win
 - 🎨 **Multiple Themes**: Play with different emoji themes (letters, and more)
 - 🔊 **Voice Feedback**: Cards speak their emoji content when flipped
-- 📊 **Score Tracking**: Keep track of your score as you play
-- 🔀 **Shuffle Function**: Shuffle the cards during gameplay
+- 📊 **Score Tracking**: Keep track of your score as you play.
 - 🎯 **Game Completion Detection**: Knows when you've matched all pairs
 
 ## Architecture
