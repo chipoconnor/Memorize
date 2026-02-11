@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4510EDDE2F3BDCCD00164B08 /* CONVERSATION_LOG.md in Resources */ = {isa = PBXBuildFile; fileRef = 4510EDDD2F3BDCCD00164B08 /* CONVERSATION_LOG.md */; };
+		4510EDE42F3BF7DC00164B08 /* ThemePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4510EDE32F3BF7DC00164B08 /* ThemePickerView.swift */; };
+		4510EDE62F3C031200164B08 /* EmojiMemoryGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4510EDE52F3C031200164B08 /* EmojiMemoryGameView.swift */; };
 		4512E2BA2BB5046600861AA6 /* AspectVGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4512E2B92BB5046600861AA6 /* AspectVGrid.swift */; };
 		453F95A12EFA338D000299CF /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453F95A02EFA338D000299CF /* Theme.swift */; };
 		453F95A32EFA5C6D000299CF /* LoggingSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453F95A22EFA5C6D000299CF /* LoggingSetup.swift */; };
@@ -15,7 +17,6 @@
 		4581EC8C2EFCA544005AD80B /* CardBackDesignOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4581EC8B2EFCA543005AD80B /* CardBackDesignOptions.swift */; };
 		4581EC8E2EFCBA79005AD80B /* PoppyIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4581EC8D2EFCBA79005AD80B /* PoppyIconView.swift */; };
 		45B7534E2BCCA31E003AF94A /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B7534D2BCCA31E003AF94A /* CardView.swift */; };
-		45B753502BCCB169003AF94A /* ButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B7534F2BCCB169003AF94A /* ButtonsView.swift */; };
 		45B753542BCCC194003AF94A /* Pie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B753532BCCC194003AF94A /* Pie.swift */; };
 		45B753562BCE066C003AF94A /* Cardify.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B753552BCE066C003AF94A /* Cardify.swift */; };
 		45B753582BD07DFA003AF94A /* Speaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B753572BD07DFA003AF94A /* Speaker.swift */; };
@@ -23,13 +24,14 @@
 		45E4DEA02B9A3D1400746EE5 /* MemoryGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E4DE9F2B9A3D1400746EE5 /* MemoryGame.swift */; };
 		45E4DEA22B9A401B00746EE5 /* EmojiMemoryGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E4DEA12B9A401B00746EE5 /* EmojiMemoryGame.swift */; };
 		45FBDB29291482BA008E392B /* MemorizeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FBDB28291482BA008E392B /* MemorizeApp.swift */; };
-		45FBDB2B291482BA008E392B /* EmojiMemoryGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FBDB2A291482BA008E392B /* EmojiMemoryGameView.swift */; };
 		45FBDB2D291482BB008E392B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45FBDB2C291482BB008E392B /* Assets.xcassets */; };
 		45FBDB30291482BB008E392B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45FBDB2F291482BB008E392B /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4510EDDD2F3BDCCD00164B08 /* CONVERSATION_LOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CONVERSATION_LOG.md; sourceTree = "<group>"; };
+		4510EDE32F3BF7DC00164B08 /* ThemePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemePickerView.swift; sourceTree = "<group>"; };
+		4510EDE52F3C031200164B08 /* EmojiMemoryGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiMemoryGameView.swift; sourceTree = "<group>"; };
 		4512E2B92BB5046600861AA6 /* AspectVGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AspectVGrid.swift; sourceTree = SOURCE_ROOT; };
 		453F95A02EFA338D000299CF /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		453F95A22EFA5C6D000299CF /* LoggingSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingSetup.swift; sourceTree = "<group>"; };
@@ -39,7 +41,6 @@
 		4581EC8B2EFCA543005AD80B /* CardBackDesignOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBackDesignOptions.swift; sourceTree = "<group>"; };
 		4581EC8D2EFCBA79005AD80B /* PoppyIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoppyIconView.swift; sourceTree = "<group>"; };
 		45B7534D2BCCA31E003AF94A /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
-		45B7534F2BCCB169003AF94A /* ButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsView.swift; sourceTree = SOURCE_ROOT; };
 		45B753532BCCC194003AF94A /* Pie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pie.swift; sourceTree = "<group>"; };
 		45B753552BCE066C003AF94A /* Cardify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cardify.swift; sourceTree = "<group>"; };
 		45B753572BD07DFA003AF94A /* Speaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Speaker.swift; sourceTree = "<group>"; };
@@ -48,7 +49,6 @@
 		45E4DEA12B9A401B00746EE5 /* EmojiMemoryGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiMemoryGame.swift; sourceTree = "<group>"; };
 		45FBDB25291482BA008E392B /* Memorize.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Memorize.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		45FBDB28291482BA008E392B /* MemorizeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemorizeApp.swift; sourceTree = "<group>"; };
-		45FBDB2A291482BA008E392B /* EmojiMemoryGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiMemoryGameView.swift; sourceTree = "<group>"; };
 		45FBDB2C291482BB008E392B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		45FBDB2F291482BB008E392B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -79,8 +79,9 @@
 				45FBDB27291482BA008E392B /* Memorize */,
 				45FBDB26291482BA008E392B /* Products */,
 				45B753592BD0D092003AF94A /* Frameworks */,
-				4562479E2F00F2F0000BF376 /* README.md */,
 				4562479F2F00F2F9000BF376 /* .gitignore */,
+				4510EDDD2F3BDCCD00164B08 /* CONVERSATION_LOG.md */,
+				4562479E2F00F2F0000BF376 /* README.md */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,22 +98,21 @@
 			children = (
 				4512E2B92BB5046600861AA6 /* AspectVGrid.swift */,
 				45FBDB2C291482BB008E392B /* Assets.xcassets */,
-				45B7534F2BCCB169003AF94A /* ButtonsView.swift */,
 				4581EC8B2EFCA543005AD80B /* CardBackDesignOptions.swift */,
 				45B753552BCE066C003AF94A /* Cardify.swift */,
 				45B7534D2BCCA31E003AF94A /* CardView.swift */,
 				45E4DEA12B9A401B00746EE5 /* EmojiMemoryGame.swift */,
-				45FBDB2A291482BA008E392B /* EmojiMemoryGameView.swift */,
+				4510EDE52F3C031200164B08 /* EmojiMemoryGameView.swift */,
 				4553676A2EF3C8FD0015CD03 /* FlyingNumber.swift */,
 				453F95A22EFA5C6D000299CF /* LoggingSetup.swift */,
 				45FBDB28291482BA008E392B /* MemorizeApp.swift */,
 				45E4DE9F2B9A3D1400746EE5 /* MemoryGame.swift */,
 				45B753532BCCC194003AF94A /* Pie.swift */,
+				4581EC8D2EFCBA79005AD80B /* PoppyIconView.swift */,
 				45FBDB2E291482BB008E392B /* Preview Content */,
 				45B753572BD07DFA003AF94A /* Speaker.swift */,
 				453F95A02EFA338D000299CF /* Theme.swift */,
-				4581EC8D2EFCBA79005AD80B /* PoppyIconView.swift */,
-				4510EDDD2F3BDCCD00164B08 /* CONVERSATION_LOG.md */,
+				4510EDE32F3BF7DC00164B08 /* ThemePickerView.swift */,
 			);
 			path = Memorize;
 			sourceTree = "<group>";
@@ -197,19 +197,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				45E4DEA02B9A3D1400746EE5 /* MemoryGame.swift in Sources */,
-				45FBDB2B291482BA008E392B /* EmojiMemoryGameView.swift in Sources */,
 				45B753542BCCC194003AF94A /* Pie.swift in Sources */,
 				45B753562BCE066C003AF94A /* Cardify.swift in Sources */,
 				45FBDB29291482BA008E392B /* MemorizeApp.swift in Sources */,
 				4553676B2EF3C8FD0015CD03 /* FlyingNumber.swift in Sources */,
 				4512E2BA2BB5046600861AA6 /* AspectVGrid.swift in Sources */,
-				45B753502BCCB169003AF94A /* ButtonsView.swift in Sources */,
 				45B753582BD07DFA003AF94A /* Speaker.swift in Sources */,
 				453F95A32EFA5C6D000299CF /* LoggingSetup.swift in Sources */,
 				453F95A12EFA338D000299CF /* Theme.swift in Sources */,
 				45B7534E2BCCA31E003AF94A /* CardView.swift in Sources */,
+				4510EDE42F3BF7DC00164B08 /* ThemePickerView.swift in Sources */,
 				45E4DEA22B9A401B00746EE5 /* EmojiMemoryGame.swift in Sources */,
 				4581EC8E2EFCBA79005AD80B /* PoppyIconView.swift in Sources */,
+				4510EDE62F3C031200164B08 /* EmojiMemoryGameView.swift in Sources */,
 				4581EC8C2EFCA544005AD80B /* CardBackDesignOptions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -354,7 +354,7 @@
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -385,7 +385,7 @@
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

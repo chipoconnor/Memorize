@@ -19,7 +19,9 @@ struct EmojiMemoryGameView: View {
 	private let dealInterval: TimeInterval = 0.15
 	private let deckWidth: CGFloat = 50
 	private let cardAspectRatio: CGFloat = 2/3
-	
+
+	@State private var showingThemePicker = false
+
 	private var titleGradient: AnyShapeStyle {
 		if #available(iOS 16.0, *) {
 			return AnyShapeStyle(viewModel.color.gradient)
@@ -40,7 +42,7 @@ struct EmojiMemoryGameView: View {
 				VStack(alignment: .trailing) {
 					Text(viewModel.currentTheme.name)
 						.font(.headline)
-						.foregroundStyle(.secondary)
+						.foregroundStyle(viewModel.color)
 					Text("Score: \(viewModel.score)")
 						.font(.title2)
 						.fontWeight(.bold)
@@ -52,8 +54,21 @@ struct EmojiMemoryGameView: View {
 				.foregroundColor(viewModel.color)
 			
 			Spacer()
-			
-			ButtonsView(viewModel)
+
+			HStack {
+				Button("Shuffle", systemImage: "shuffle") {
+					withAnimation {
+						viewModel.shuffle()
+					}
+				}
+				Spacer()
+				Button("Themes", systemImage: "paintpalette") {
+					showingThemePicker = true
+				}
+			}
+			.labelStyle(.iconOnly)
+			.font(.largeTitle)
+			.foregroundStyle(viewModel.color)
 		}
 		.padding()
 		.alert("Congratulations! 🎉", isPresented: .constant(viewModel.isGameComplete)) {
@@ -63,10 +78,13 @@ struct EmojiMemoryGameView: View {
 				}
 			}
 			Button("Change Theme") {
-				// The alert will dismiss and user can select theme
+				showingThemePicker = true
 			}
 		} message: {
 			Text("You completed the game with a score of \(viewModel.score)!")
+		}
+		.sheet(isPresented: $showingThemePicker) {
+			ThemePickerView(viewModel: viewModel, isPresented: $showingThemePicker)
 		}
 	}
 
@@ -149,4 +167,3 @@ struct EmojiMemoryGameView_Previews: PreviewProvider {
 			.preferredColorScheme(.dark)
 	}
 }
-
